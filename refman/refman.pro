@@ -4,4 +4,7 @@ subdirs += \
 
 SUBDIRS += \
     AutomaticAllocationOfTheOutputData \
-    MLP
+    MLP \
+    ReadImage \
+    Pixel \
+    Mat
