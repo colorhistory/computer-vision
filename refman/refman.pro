@@ -7,4 +7,7 @@ SUBDIRS += \
     MLP \
     ReadImage \
     Pixel \
-    Mat
+    Mat \
+    ReadPixel \
+    AlphaBlending \
+    ContrastAndBrightness
