@@ -10,4 +10,7 @@ SUBDIRS += \
     Mat \
     ReadPixel \
     AlphaBlending \
-    ContrastAndBrightness
+    ContrastAndBrightness \
+    Blur \
+    MeanFilter \
+    Random
