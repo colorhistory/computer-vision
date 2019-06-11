@@ -13,4 +13,5 @@ SUBDIRS += \
     ContrastAndBrightness \
     Blur \
     MeanFilter \
-    Random
+    Random \
+    MeanShift
