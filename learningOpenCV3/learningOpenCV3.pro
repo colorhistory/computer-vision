@@ -16,4 +16,6 @@ SUBDIRS += \
     AlphaBlendRGBA \
     addWeighted \
     RNG \
-    VideoCapture
+    VideoCapture \
+    QtAndOpenCV \
+    Threshold

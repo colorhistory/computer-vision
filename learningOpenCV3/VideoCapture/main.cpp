@@ -13,7 +13,7 @@
 #include "opencv2/opencv.hpp"
 
 int main(int /* argc */, char** /* argv */) {
-    cv::VideoCapture cap("../../materials/clock.flv");
+    cv::VideoCapture cap("../../materials/video.flv");
     if (!cap.isOpened()) {
         std::cout << "load image error..." << std::endl;
         return -1;
@@ -21,14 +21,14 @@ int main(int /* argc */, char** /* argv */) {
 
     unsigned FPS = cap.get(cv::CAP_PROP_FPS);
     unsigned f = static_cast<unsigned>(cap.get(cv::CAP_PROP_FOURCC));
+    cv::Size size(cap.get(cv::CAP_PROP_FRAME_WIDTH), cap.get(cv::CAP_PROP_FRAME_HEIGHT));
 
     char fourcc[] = {static_cast<char>(f), static_cast<char>(f >> 8), static_cast<char>(f >> 16),
                      static_cast<char>(f >> 24), '\0'};
 
     std::cout << fourcc << std::endl;
 
-    cv::VideoWriter writer("../../materials/video.flv", cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), FPS,
-                           cv::Size(640, 480));
+    cv::VideoWriter writer("../../materials/video.avi", cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), FPS, size);
     if (!writer.isOpened()) {
         std::cout << "load image error..." << std::endl;
         return -1;
@@ -39,13 +39,16 @@ int main(int /* argc */, char** /* argv */) {
     cv::namedWindow(windowTitle, cv::WINDOW_GUI_NORMAL);
 
     while (true) {
-        if (cap.read(frame)) {
-            cv::imshow(windowTitle, frame);
-            if (cv::waitKey(FPS) == 27) {
-                break;
-            }
-            writer.write(frame);
+        cap >> frame;
+        if (frame.empty()) {
+            break;
         }
+
+        cv::imshow(windowTitle, frame);
+        if (cv::waitKey(FPS) == 27) {
+            break;
+        }
+        writer << frame;
     }
 
     cv::destroyWindow(windowTitle);
