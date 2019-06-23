@@ -18,4 +18,13 @@ SUBDIRS += \
     RNG \
     VideoCapture \
     QtAndOpenCV \
-    Threshold
+    Threshold \
+    AffineTransformation \
+    PerspectiveTransformation \
+    LogPolarTransform \
+    EqualizationHist \
+    DiscreteFourierTransforms \
+    Histogram \
+    EMD \
+    BackProjection \
+    Contour
