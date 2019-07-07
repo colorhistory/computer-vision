@@ -1,0 +1,2 @@
+HEADERS += \
+    CoreFunction.hpp
