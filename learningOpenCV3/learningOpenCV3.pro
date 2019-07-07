@@ -27,4 +27,5 @@ SUBDIRS += \
     Histogram \
     EMD \
     BackProjection \
-    Contour
+    Contour \
+    LineIterator
